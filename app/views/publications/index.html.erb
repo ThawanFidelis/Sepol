@@ -1,0 +1,27 @@
+<h1>Publicações</h1>
+
+<table class="zebra-striped">
+  <tr>
+    <th>Titulo</th>
+    <th>Abstract</th>
+    <th>Link</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @publications.each do |publication| %>
+  <tr>
+    <td><%= publication.titulo %></td>
+    <td><%= publication.abstract[0..60] + '...' %> <br /><%=link_to 'Ler Mais', publication %></td>
+    <td><a href="<%=publication.link %>"> <%=publication.link[0..30] + "..."%></a></td>
+    <td class="btn"><%= link_to 'Editar', edit_publication_path(publication) if user_signed_in? %></td>
+    <td class="btn"><%= (link_to 'Apagar', publication, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<div class="btn">
+<%= link_to 'Adicionar Publicação', new_publication_path if user_signed_in? %>
+</div>
+

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @researcher.nome %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @researcher.email %>
+</p>
+
+<p>
+  <b>Cargo:</b>
+  <%= @researcher.cargo %>
+</p>
+
+<p>
+  <b>Lattes:</b>
+  <a href="<%= @researcher.lattes %>"><%= @researcher.lattes %></a>
+</p>
+
+<div class = "btn">
+<%= link_to 'Editar', edit_researcher_path(@researcher) if user_signed_in? %>
+</div>
+<div class = "btn">
+<%= link_to 'Voltar', researchers_path %>
+</div>
+

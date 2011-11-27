@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+
+	<title>Sepol</title>
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+	<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+
+	<script src="js/prototype.js" type="text/javascript"></script>
+	<script src="js/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
+	<script src="js/lightbox.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+
+<div class="content">
+        <div class="page-header">
+          <h1>Sepol <small>Polímeros a partir de recursos renováveis</small></h1>
+        </div>
+        <div>
+
+      <ul class="tabs">
+        <li class="active"><a href="<%= homes_path %>">Home</a></li>
+        <li><a href="<%= equipaments_path %>">Infra Estrutura</a></li>
+        <li><a href="<%= researchers_path %>">Grupo de Pesquisa</a></li>
+        <li><a href="<%= publications_path %>">Publicações</a></li>
+        <li><a><%= user_signed_in? ? current_user.name :  link_to('Login', new_user_session_path) %></a></li>
+        <li><a href=" http://www.uenf.br/index.php ">UENF</a></li>
+        <li><a href="http://www.uenf.br/Uenf/Pages/CCT/Lamav/">Lamav</a></li>
+        <li><a href="http://www.cnpq.br/">CNPq </a></li>
+      </ul>
+
+        </div>
+        <div class="row">
+          <ul>
+           <p class="notice"><%= notice %></p>
+           <p class="alert"><%= alert %></p>
+          <%= yield %>
+
+        </ul>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+      <div class="container">
+        <p>
+          Universidade Estadual do Norte Fluminense Darcy Ribeiro | Av. Alberto Lamego, 2000 - Parque Califórnia<br />
+          Laboratório de Materiais Avançados - LAMAV | Centro de Ciência e Tecnologia – CCT <br />
+          Campos dos Goytacazes - RJ | CEP: 28013-602<br /><br />
+        </p>
+      </div>
+    </footer>
+</div>
+</body>
+</html>
+

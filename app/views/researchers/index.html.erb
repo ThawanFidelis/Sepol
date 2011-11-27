@@ -1,0 +1,123 @@
+<h1>Grupo de Pesquisa</h1>
+
+<% professores, colaboradores, alunos_pos, bolsistas_ic, apoio = [],[],[],[],[]%>
+
+<% @researchers.each do |researcher| %>
+  <% professores << researcher if researcher.cargo == "professor" %>
+  <% colaboradores << researcher if researcher.cargo == "colaboradores" %>
+  <% alunos_pos << researcher if researcher.cargo == "pos_graduacao" %>
+  <% bolsistas_ic << researcher if researcher.cargo == "bolsista_i_c" %>
+  <% apoio << researcher if researcher.cargo == "apoio_tecnico" %>
+<% end %>
+
+
+<h3>Professores</h3>
+<table  class="zebra-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Lattes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% professores.each do |professor| %>
+  <tr>
+    <td><%= professor.nome %></td>
+    <td><%= professor.email %></td>
+    <td><a href="<%= professor.lattes %>"><%= professor.lattes %></a></td>
+    <td class="btn"><%= link_to 'Mostrar', professor %></td>
+    <td class="btn"><%= link_to 'Editar', edit_researcher_path(professor) if user_signed_in? %></td>
+    <td class="btn"><%= (link_to 'Apagar', professor, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<br/>
+<br />
+
+<h3>Colaboradores</h3>
+<table  class="zebra-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Lattes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% colaboradores.each do |colaborador| %>
+  <tr>
+    <td><%= colaborador.nome %></td>
+    <td><%= colaborador.email %></td>
+    <td><a href="<%= colaborador.lattes %>"><%= colaborador.lattes %></a></td>
+    <td class="btn"><%= link_to 'Mostrar', colaborador %></td>
+    <td class="btn"><%= link_to 'Editar', edit_researcher_path(colaborador) if user_signed_in? %></td>
+    <td class="btn"><%= (link_to 'Apagar', colaborador, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+<br/>
+
+
+<h3>Alunos de Pós-Graduação</h3>
+<table  class="zebra-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Lattes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% alunos_pos.each do |aluno_pos| %>
+  <tr>
+    <td><%= aluno_pos.nome %></td>
+    <td><a href="<%= aluno_pos.email %>"><%= aluno_pos.lattes %></a></td>
+    <td><%= aluno_pos.lattes %></td>
+    <td class="btn"><%= link_to 'Mostrar', aluno_pos %></td>
+    <td class="btn"><%= link_to 'Editar', edit_researcher_path(aluno_pos) if user_signed_in? %></td>
+    <td class="btn"><%= (link_to 'Apagar', aluno_pos, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+<br/>
+
+<h3>Bolsistas de Iniciação Científica</h3>
+<table  class="zebra-striped">
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Lattes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% bolsistas_ic.each do |bolsista_i_c| %>
+  <tr>
+    <td><%= bolsista_i_c.nome %></td>
+    <td><%= bolsista_i_c.email %></td>
+    <td><a href="<%= bolsista_i_c.lattes %>"><%= bolsista_i_c.lattes %></a></td>
+    <td class="btn"><%= link_to 'Mostrar', bolsista_i_c %></td>
+    <td class="btn"><%= link_to 'Editar', edit_researcher_path(bolsista_i_c) if user_signed_in? %></td>
+    <td class="btn"><%= (link_to 'Apagar', bolsista_i_c, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<br/>
+<br />
+<div class="btn">
+<%= link_to 'Adicionar Pesquisador', new_researcher_path%>
+</div>
+

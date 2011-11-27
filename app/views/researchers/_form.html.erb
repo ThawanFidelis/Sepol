@@ -1,0 +1,38 @@
+<%= form_for(@researcher) do |f| %>
+  <% if @researcher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@researcher.errors.count, "") %> Ocorreu um erro ao adicionar o pesquisador. verifique os campos obrigatórios:</h2>
+
+      <ul>
+      <% @researcher.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome%>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :cargo %><br />
+    <%=  f.select :cargo, ([["Professor", "professor"],
+                            ["Bolsista de I.C.", "bolsista_i_c"],
+                            ["Pós-Graduação", "pos_graduacao"] ,
+                            ["Colaborador", "colaborador"],
+                            ["Apoio Técnico", "apoio_tecnico"]]) %>
+  </div>
+  <div class="field">
+    <%= f.label :lattes %><br />
+    <%= f.url_field :lattes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

@@ -1,0 +1,51 @@
+<h2>Equipamentos</h2><hr>
+
+<% if user_signed_in? %>
+
+  <table class = "zebra-striped">
+    <tr>
+      <th>nome</th>
+      <th>descricao</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @equipaments.each do |equipament| %>
+    <tr>
+      <td><%= equipament.nome %></td>
+      <td><%= equipament.descricao %></td>
+      <td class="btn" ><%= link_to 'Mostrar', equipament %></td>
+      <td> </td>
+      <td class="btn"><%= link_to 'Editar', edit_equipament_path(equipament)%></td>
+      <td> </td>
+      <td class="btn"><%= (link_to 'Apagar', equipament, confirm: 'Are you sure?', method: :delete)%>
+      </td>
+    </tr>
+  <% end %>
+  </table>
+  <div class="btn">
+    <%= link_to 'Adicionar Equipamento', new_equipament_path%>
+  </div>
+<% else %>
+  <% elementos_por_linha = 4%>
+
+  <% @equipaments.in_groups_of(elementos_por_linha,0) do |grupos| %>
+  <ul class="media-grid">
+    <li>
+      <% elementos_por_linha.times do |equipament| %>
+        <% if grupos[equipament].class != Equipament %>
+        <%else%>
+          <a href="<%= grupos[equipament].picture(:large)%>" rel="lightbox" title="<%= grupos[equipament].descricao%>">
+          <img src="<%= grupos[equipament].picture.url(:small)%>"  width="100" height="100" alt="" />
+        <%end%>
+      <% end %>
+      </a>
+    </li>
+  </ul>
+
+  <% end %>
+<% end %>
+

@@ -1,0 +1,17 @@
+<p>
+  <b>Titulo:</b>
+  <%= @home.titulo %>
+</p>
+
+<p>
+  <b>Texto:</b>
+  <%= @home.texto %>
+</p>
+
+<div class="btn">
+  <%= link_to 'Editar', edit_home_path(@home) if user_signed_in? %> |
+</div>
+<div class="btn">
+  <%= link_to 'Voltar', homes_path %>
+</div>
+
