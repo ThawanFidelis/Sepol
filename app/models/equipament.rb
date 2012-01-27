@@ -1,5 +1,6 @@
 class Equipament < ActiveRecord::Base
   validates_presence_of :nome, :descricao
+  belongs_to :reserves
 
   has_attached_file :picture, :styles => {:small => "150x150>", :large => "650x550>"},
                                :url  => "/pictures/equipaments/:id/:style/:basename.:extension",
