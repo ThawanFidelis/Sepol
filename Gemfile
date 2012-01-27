@@ -14,6 +14,8 @@ gem 'execjs'
 
 gem 'therubyracer'
 
+gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: 'a2b16bcdc9'
+
 #gem 'inherited_resources'
 gem 'formtastic'
 
