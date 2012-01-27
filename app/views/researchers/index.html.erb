@@ -169,7 +169,9 @@
 
 <br/>
 <br />
-<div class="btn">
-<%= link_to 'Adicionar Pesquisador', new_researcher_path%>
-</div>
+<% if user_signed_in? %>
+  <div class="btn">
+    <%= link_to 'Adicionar Pesquisador', new_researcher_path%>
+  </div>
+<% end %>
 
