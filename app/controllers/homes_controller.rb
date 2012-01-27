@@ -1,7 +1,16 @@
 class HomesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:index]
   # GET /homes
   # GET /homes.json
+
+  def mercury_update
+    home = Home.find(params[:id])
+    home.titulo = params[:content][:page_name][:value]
+    home.texto = params[:content][:page_content][:value]
+    home.save!
+    render text: ""
+  end
+
   def index
     @homes = Home.all
 
