@@ -6,11 +6,11 @@ class AddAttachmentPictureToEquipaments < ActiveRecord::Migration
     add_column :equipaments, :picture_updated_at, :datetime
   end
 
-  def self.down
-    remove_column :equipaments, :picture_file_name
-    remove_column :equipaments, :picture_content_type
-    remove_column :equipaments, :picture_file_size
-    remove_column :equipaments, :picture_updated_at
-  end
+#  def self.down
+#    remove_column :equipaments, :picture_file_name
+#    remove_column :equipaments, :picture_content_type
+#    remove_column :equipaments, :picture_file_size
+#    remove_column :equipaments, :picture_updated_at
+#  end
 end
 

@@ -7,9 +7,5 @@ class CreateEquipaments < ActiveRecord::Migration
       t.timestamps
     end
   end
-
-  def self.down
-    remove_column :equipaments
-  end
 end
 
