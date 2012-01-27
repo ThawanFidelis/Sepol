@@ -14,6 +14,7 @@
 <h3>Professores</h3>
 <table  class="zebra-striped">
   <tr>
+    <th></th>
     <th>Nome</th>
     <th>Email</th>
     <th>Lattes</th>
@@ -24,12 +25,24 @@
 
   <% professores.each do |professor| %>
   <tr>
-    <td><%= professor.nome %></td>
+    <td>
+      <ul class="media-grid">
+        <li>
+          <a>
+            <img src="<%= professor.avatar.url(:thumb)%>"/>
+          </a>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <%= link_to  professor.nome, researcher_path(professor)%>
+    </td>
     <td><%= professor.email %></td>
     <td><a href="<%= professor.lattes %>"><%= professor.lattes %></a></td>
-    <td class="btn"><%= link_to 'Mostrar', professor %></td>
-    <td class="btn"><%= link_to 'Editar', edit_researcher_path(professor) if user_signed_in? %></td>
-    <td class="btn"><%= (link_to 'Apagar', professor, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+    <% if user_signed_in? %>
+      <td class="btn"><%= link_to 'Editar', edit_researcher_path(professor)%></td>
+      <td class="btn"><%= (link_to 'Apagar', professor, confirm: 'Esta ação irá excluir o professor!', method: :delete)%></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -41,6 +54,7 @@
 <h3>Colaboradores</h3>
 <table  class="zebra-striped">
   <tr>
+    <th></th>
     <th>Nome</th>
     <th>Email</th>
     <th>Lattes</th>
@@ -51,12 +65,24 @@
 
   <% colaboradores.each do |colaborador| %>
   <tr>
-    <td><%= colaborador.nome %></td>
+    <td>
+      <ul class="media-grid">
+        <li>
+          <a>
+            <img src="<%= colaborador.avatar.url(:thumb)%>"/>
+          </a>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <%= link_to  colaborador.nome, researcher_path(colaborador)%>
+    </td>
     <td><%= colaborador.email %></td>
     <td><a href="<%= colaborador.lattes %>"><%= colaborador.lattes %></a></td>
-    <td class="btn"><%= link_to 'Mostrar', colaborador %></td>
-    <td class="btn"><%= link_to 'Editar', edit_researcher_path(colaborador) if user_signed_in? %></td>
-    <td class="btn"><%= (link_to 'Apagar', colaborador, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+    <% if user_signed_in? %>
+      <td class="btn"><%= link_to 'Editar', edit_researcher_path(colaborador)%></td>
+      <td class="btn"><%= (link_to 'Apagar', colaborador, confirm: 'Esta ação irá excluir o colaborador!', method: :delete)%></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -68,6 +94,7 @@
 <h3>Alunos de Pós-Graduação</h3>
 <table  class="zebra-striped">
   <tr>
+    <th></th>
     <th>Nome</th>
     <th>Email</th>
     <th>Lattes</th>
@@ -78,12 +105,24 @@
 
   <% alunos_pos.each do |aluno_pos| %>
   <tr>
-    <td><%= aluno_pos.nome %></td>
+    <td>
+      <ul class="media-grid">
+        <li>
+          <a <% link_to 'Mostrar', aluno_pos %>>
+            <img src="<%= aluno_pos.avatar.url(:thumb)%>"/>
+          </a>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <%= link_to aluno_pos.nome, researcher_path(aluno_pos)%>
+    </td>
     <td><a href="<%= aluno_pos.email %>"><%= aluno_pos.lattes %></a></td>
     <td><%= aluno_pos.lattes %></td>
-    <td class="btn"><%= link_to 'Mostrar', aluno_pos %></td>
-    <td class="btn"><%= link_to 'Editar', edit_researcher_path(aluno_pos) if user_signed_in? %></td>
-    <td class="btn"><%= (link_to 'Apagar', aluno_pos, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+    <% if user_signed_in? %>
+      <td class="btn"><%= link_to 'Editar', edit_researcher_path(aluno_pos)%></td>
+      <td class="btn"><%= (link_to 'Apagar', aluno_pos, confirm: 'Esta ação irá excluir o aluno!', method: :delete)%></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -94,6 +133,7 @@
 <h3>Bolsistas de Iniciação Científica</h3>
 <table  class="zebra-striped">
   <tr>
+    <th></th>
     <th>Nome</th>
     <th>Email</th>
     <th>Lattes</th>
@@ -104,12 +144,24 @@
 
   <% bolsistas_ic.each do |bolsista_i_c| %>
   <tr>
-    <td><%= bolsista_i_c.nome %></td>
+    <td>
+      <ul class="media-grid">
+        <li>
+          <a <% link_to 'Mostrar', bolsista_i_c %>>
+            <img src="<%= bolsista_i_c.avatar.url(:thumb)%>"/>
+          </a>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <%= link_to  bolsista_i_c.nome, researcher_path(bolsista_i_c)%>
+    </td>
     <td><%= bolsista_i_c.email %></td>
     <td><a href="<%= bolsista_i_c.lattes %>"><%= bolsista_i_c.lattes %></a></td>
-    <td class="btn"><%= link_to 'Mostrar', bolsista_i_c %></td>
-    <td class="btn"><%= link_to 'Editar', edit_researcher_path(bolsista_i_c) if user_signed_in? %></td>
-    <td class="btn"><%= (link_to 'Apagar', bolsista_i_c, confirm: 'Are you sure?', method: :delete) if user_signed_in? %></td>
+    <% if user_signed_in? %>
+      <td class="btn"><%= link_to 'Editar', edit_researcher_path(bolsista_i_c)%></td>
+      <td class="btn"><%= (link_to 'Apagar', bolsista_i_c, confirm: 'Esta ação irá excluir o bolsista!', method: :delete)%></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

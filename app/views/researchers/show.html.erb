@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<ul class="media-grid">
+  <li>
+    <a>
+      <img src="<%= @researcher.avatar.url(:small)%>"/>
+    </a>
+  </li>
+</ul>
+
 <p>
   <b>Nome:</b>
   <%= @researcher.nome %>
@@ -19,10 +27,11 @@
   <b>Lattes:</b>
   <a href="<%= @researcher.lattes %>"><%= @researcher.lattes %></a>
 </p>
-
+<%if user_signed_in?%>
 <div class = "btn">
-<%= link_to 'Editar', edit_researcher_path(@researcher) if user_signed_in? %>
+<%= link_to 'Editar', edit_researcher_path(@researcher)%>
 </div>
+<%end%>
 <div class = "btn">
 <%= link_to 'Voltar', researchers_path %>
 </div>

@@ -3,39 +3,30 @@
   <%= @equipament.nome %>
 </p>
 
+<ul class="media-grid">
+  <li>
+    <a>
+      <%= image_tag @equipament.picture(:large) %>
+    </a>
+  </li>
+</ul>
+
 <p>
   <b>Descricao:</b>
   <%= @equipament.descricao %>
 </p>
 
-<p>
-  <%= image_tag @equipament.picture(:large) %>
-</p>
-
-<% if @equipament.id - 1 > 0 %>
-  <div class="btn">
-    <%= link_to 'Anterior', equipament_path(@equipament.id-1) %>
-  </div>
-<% else %>
-  <div class="btn">
-    <%= 'Anterior'%>
-  </div>
-<% end %>
-
+<br/>
+<div class = "btn">
+  <%= link_to 'Reservar Equipamento', new_reserve_path(@equipament) %>
+</div>
 <div class="btn">
   <%= link_to 'Editar', edit_equipament_path(@equipament) if user_signed_in? %>
 </div>
 <div class="btn">
+  <%= link_to 'Apagar', @equipament, confirm: 'Essa ação irá apagar o equipamento!', method: :delete%>
+</div>
+<div class="btn">
   <%= link_to 'Voltar', equipaments_path %>
 </div>
-
-<% if @equipament.id < Equipament.all.last.id  %>
-  <div class="btn">
-    <%= link_to 'Proximo', equipament_path(@equipament.id+1) %>
-  </div>
-<% else %>
-  <div class="btn">
-    <%= 'Proximo' %>
-  </div>
-<% end %>
 

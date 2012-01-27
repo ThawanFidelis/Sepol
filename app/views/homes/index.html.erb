@@ -1,11 +1,12 @@
 <% home = @homes.first %>
 
-  <h2><%= home.titulo %></h2><hr>
-  <ul>
-    <td><p><%= home.texto.html_safe %></p></td>
-    <td class="btn" ><%= link_to 'Mostrar', home if user_signed_in? %></td>
-    <td class="btn" ><%= link_to 'Editar', edit_home_path(home) if user_signed_in? %></td>
-  </ul>
+<h2><%= home.titulo.html_safe %></h2><hr>
 
+<p><%= home.texto.html_safe %></p>
+<% if user_signed_in? %>
+  <div class="btn">
+    <%= link_to 'Mostrar', home %>
+  </div>
+<% end %>
 <br />
 
