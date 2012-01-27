@@ -1,5 +1,10 @@
 Sepol::Application.routes.draw do
 
+  Mercury::Engine.routes
+
+  resources :reserves
+
+
   root :to => 'homes#index'
 
   devise_for :users
@@ -13,7 +18,11 @@ Sepol::Application.routes.draw do
 
   resources :pesquisadores
 
-  resources :homes
+  resources :homes do
+    member do
+      put :mercury_update
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
