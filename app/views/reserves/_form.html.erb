@@ -1,4 +1,4 @@
-<%= form_for(@reserf) do |f| %>
+<%= form_for([@reserf, @equipament]) do |f| %>
   <% if @reserf.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@reserf.errors.count, "error") %> prohibited this reserf from being saved:</h2>
@@ -11,15 +11,29 @@
     </div>
   <% end %>
 
+
   <div class="field">
+    <%= f.label :Usuario %>
+    <%= f.select :user_id, [[current_user.name ,current_user.id]] %>
+  <div>
+
+  <div class="field">
+    <%= f.label :equipamento %><br />
+    <% equipamentos = [] %>
+    <% Equipament.all.each{|equipament| equipamentos << [equipament.nome, equipament.id]}%>
+    <%= f.select :equipament, equipamentos %>
+  </div>
+
+  <div class="field ">
     <%= f.label :inicio %><br />
-    <%= f.datetime_select :inicio %>
+    <%= f.datetime_select :inicio, :default => DateTime.now, :order => [:day, :month,:year] %>
   </div>
   <div class="field">
     <%= f.label :termino %><br />
-    <%= f.datetime_select :termino %>
+    <%= f.datetime_select :termino, :default => 1.hours.from_now, :order => [:day, :month,:year] %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+

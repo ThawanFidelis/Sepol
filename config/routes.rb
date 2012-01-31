@@ -2,7 +2,13 @@ Sepol::Application.routes.draw do
 
   Mercury::Engine.routes
 
-  resources :reserves
+
+  resources :equipaments
+
+
+  resources :reserves do
+    resources :equipaments, :only => [:create, :new]
+  end
 
 
   root :to => 'homes#index'
@@ -12,7 +18,6 @@ Sepol::Application.routes.draw do
 
   resources :publications
 
-  resources :equipaments
 
   resources :researchers
 

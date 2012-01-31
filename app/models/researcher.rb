@@ -1,6 +1,7 @@
 class Researcher < ActiveRecord::Base
   validates_presence_of :nome
-  has_attached_file :avatar, :styles => {:small => "300x300>", :thumb => "100x100"},
+  has_attached_file :avatar,  :default_url => "/avatares/researchers/default/:style/default.png",
+                               :styles => {:small => "300x300>", :thumb => "100x100"},
                                :url  => "/avatares/researchers/:id/:style/:basename.:extension",
                                :path => ":rails_root/public/avatares/researchers/:id/:style/:basename.:extension"
 

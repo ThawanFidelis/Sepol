@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120127061931) do
+ActiveRecord::Schema.define(:version => 20120131192618) do
 
   create_table "equipaments", :force => true do |t|
     t.string   "nome"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20120127061931) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.integer  "user_id"
   end
 
   create_table "homes", :force => true do |t|
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20120127061931) do
     t.datetime "termino"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "equipament_id"
     t.integer  "user_id"
   end
 

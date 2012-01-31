@@ -2,7 +2,11 @@ class ReservesController < ApplicationController
   # GET /reserves
   # GET /reserves.json
   def index
+    @usuarios = User.all
+#    @equipaments = Equipament.find(params[:equipament_id])
     @reserves = Reserve.all
+
+#    @reserves = Reserve.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,6 +28,7 @@ class ReservesController < ApplicationController
   # GET /reserves/new
   # GET /reserves/new.json
   def new
+    @equipament = Equipament.new(params[:equipament_id])
     @reserf = Reserve.new
 
     respond_to do |format|
@@ -40,17 +45,28 @@ class ReservesController < ApplicationController
   # POST /reserves
   # POST /reserves.json
   def create
-    @reserf = Reserve.new(params[:reserf])
-
-    respond_to do |format|
-      if @reserf.save
-        format.html { redirect_to @reserf, notice: 'Reserve was successfully created.' }
-        format.json { render json: @reserf, status: :created, location: @reserf }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @reserf.errors, status: :unprocessable_entity }
-      end
+    @equipament = Equipament.find(params[:equipament_id])
+    @reserf = @equipament.reserves.build(params[:reserf])
+    if @reserf.save
+      redirect_to post_reserve_url(@equipament, @reserf)
+    else
+      render :action => "new"
     end
+
+
+
+
+#    @reserf = Reserve.new(params[:reserf])
+
+#    respond_to do |format|
+#      if @reserf.save
+#        format.html { redirect_to @reserf, notice: 'Reserve was successfully created.' }
+#        format.json { render json: @reserf, status: :created, location: @reserf }
+#      else
+#        format.html { render action: "new" }
+#        format.json { render json: @reserf.errors, status: :unprocessable_entity }
+#      end
+#    end
   end
 
   # PUT /reserves/1
@@ -81,3 +97,4 @@ class ReservesController < ApplicationController
     end
   end
 end
+

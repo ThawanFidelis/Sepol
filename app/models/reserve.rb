@@ -1,5 +1,5 @@
 class Reserve < ActiveRecord::Base
   has_many :equipaments
-  has_many :user
+  has_many :users
 end
 

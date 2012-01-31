@@ -1,5 +1,6 @@
 <h1>Listing reserves</h1>
 
+
 <table>
   <tr>
     <th>Usuario</th>
@@ -10,18 +11,18 @@
     <th></th>
   </tr>
 
-<% @reserves.each do |reserf| %>
+<% @usuarios.each do |usuario| %>
   <tr>
-    <td><%= reserf.user.name %></td>
-    <td><%= reserf.inicio %></td>
-    <td><%= reserf.termino %></td>
+
+    <td><%= usuario.nome %></td>
+    <td><%= usuario.reserves.inicio %></td>
+    <td><%= usuario.reserves.termino %></td>
     <td><%= link_to 'Show', reserf %></td>
     <td><%= link_to 'Edit', edit_reserf_path(reserf) %></td>
     <td><%= link_to 'Destroy', reserf, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
 <br />
 
 <%= link_to 'New Reserve', new_reserf_path %>
