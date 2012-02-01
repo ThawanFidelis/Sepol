@@ -14,9 +14,9 @@
 <% @usuarios.each do |usuario| %>
   <tr>
 
-    <td><%= usuario.nome %></td>
-    <td><%= usuario.reserves.inicio %></td>
-    <td><%= usuario.reserves.termino %></td>
+    <td><%= usuario.name %></td>
+    <td><%= usuario.reserve.inicio %></td>
+    <td><%= usuario.reserve.termino %></td>
     <td><%= link_to 'Show', reserf %></td>
     <td><%= link_to 'Edit', edit_reserf_path(reserf) %></td>
     <td><%= link_to 'Destroy', reserf, confirm: 'Are you sure?', method: :delete %></td>
@@ -25,5 +25,5 @@
 </table>
 <br />
 
-<%= link_to 'New Reserve', new_reserf_path %>
+<%= link_to 'New Reserve', new_equipament_reserf %>
 
