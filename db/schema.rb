@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131192618) do
+ActiveRecord::Schema.define(:version => 20120201034156) do
 
   create_table "equipaments", :force => true do |t|
     t.string   "nome"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120131192618) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "reserve_id"
   end
 
   create_table "homes", :force => true do |t|
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20120131192618) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "reserve_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

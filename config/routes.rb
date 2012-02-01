@@ -5,6 +5,7 @@ Sepol::Application.routes.draw do
 
   resources :equipaments
 
+  resources :reserves
 
   resources :equipaments do
     resources :reserves
