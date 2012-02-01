@@ -6,8 +6,8 @@ Sepol::Application.routes.draw do
   resources :equipaments
 
 
-  resources :reserves do
-    resources :equipaments, :only => [:create, :new]
+  resources :equipaments do
+    resources :reserves
   end
 
 
