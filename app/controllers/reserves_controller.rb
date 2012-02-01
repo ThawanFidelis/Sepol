@@ -2,7 +2,8 @@ class ReservesController < ApplicationController
   # GET /reserves
   # GET /reserves.json
   def index
-    @usuarios = User.all
+
+    @usuarios = User.new(params[:equipament])
 #    @equipaments = Equipament.find(params[:equipament_id])
     @reserves = Reserve.all
 
